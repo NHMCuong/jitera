@@ -19,7 +19,7 @@ export const UserCard = ({ user, avatar }: any) => {
           <Col xxl={6} xl={6} lg={6} md={6} sm={12} xs={24} key={item.id}>
             <Card
               hoverable
-              cover={<img src={""} alt="" />}
+              cover={<img src={""} alt="" />} // TODO Image here
               actions={[
                 <HeartOutlined key="wishlist" style={{ color: "red" }} />,
                 <EditFilled key="edit" />,
