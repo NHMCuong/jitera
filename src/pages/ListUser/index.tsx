@@ -11,27 +11,26 @@ const UserCard = lazy(() =>
 
 export const ListUser = () => {
   const [user, setUser] = useState<User[]>([]);
-  const [avatar, setAvatar] = useState([]);
+  const [avatar, setAvatar] = useState<any[]>([]);
 
   const props = { user, avatar };
 
   const handleGetUserInfo = async () => {
-    const userData = await getListUser().then((res) => {
+    const userData: User[] = await getListUser().then((res) => {
       if (res.status === 200) {
         return res.data;
       }
     });
 
-    const avatar = await userData.map((user: User) => {
+    const avatarData = await userData.map((user: User) => {
       getAvatar(user.name).then((res) => {
         if (res.status === 200) {
           return res.data;
         }
       });
     });
-
     setUser(userData);
-    setAvatar(avatar);
+    setAvatar(avatarData);
   };
 
   useEffect(() => {
