@@ -21,16 +21,18 @@ export const ListUser = () => {
         return res.data;
       }
     });
-
-    const avatarData = await userData.map((user: User) => {
-      getAvatar(user.name).then((res) => {
-        if (res.status === 200) {
-          return res.data;
-        }
-      });
-    });
     setUser(userData);
-    setAvatar(avatarData);
+
+    handleGetAvatarData(userData);
+  };
+
+  const handleGetAvatarData = async (userData: User[]) => {
+    const avatarData = await Promise.all(
+      userData.map(async (data: User) => await getAvatar(data.name))
+    );
+
+    console.log("avatarData", avatarData);
+    setAvatar(avatarData.map((avatar) => avatar.data));
   };
 
   useEffect(() => {
