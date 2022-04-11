@@ -24,7 +24,6 @@ export const UserCard = ({ user, avatar }: any) => {
               hoverable
               cover={
                 <div
-                  className="content"
                   dangerouslySetInnerHTML={{
                     __html: DOMPurify.sanitize(avatar[0]),
                   }}

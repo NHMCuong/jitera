@@ -31,7 +31,6 @@ export const ListUser = () => {
       userData.map(async (data: User) => await getAvatar(data.name))
     );
 
-    console.log("avatarData", avatarData);
     setAvatar(avatarData.map((avatar) => avatar.data));
   };
 
